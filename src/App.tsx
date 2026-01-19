@@ -15,84 +15,84 @@ function App() {
         </div>
       </div>
       <QuoteGenerator
-        showQuoteButton={true}
-        initialServices={[
+        youtubeItems={[
           {
-            itemName: "Editorial Links",
-            price: 450,
-            estimate: 1,
-            details: "Editorial Links",
+            itemName: "Feature-Length Video",
+            duration: "10-30 minutes",
+            price: 25000,
+            details: "Youtube Video",
           },
           {
-            itemName: "Expert Links",
+            itemName: "Featured Video Integration",
+            duration: "60-90 seconds",
             price: 5000,
-            estimate: 6,
-            details: "Expert Links",
-          },
-          {
-            itemName: "News Links",
-            price: 750,
-            estimate: 1,
-            details: " News Links",
+            details: "Youtube Video",
           },
         ]}
-        initialUltraPremiums={[
+        youtubeAddOns={[
           {
-            itemName: "bloomberg.com",
-            dr: 92,
-            da: 94,
-            traffic: "7.2M",
-            price: 36000,
-            estimate: 1,
-            details: "bloomberg",
+            itemName: "Youtube Short",
+            duration: "60-90 seconds",
+            price: 1250,
+            details: "Youtube Video",
           },
           {
-            itemName: "rollingstone.com",
-            dr: 90,
-            da: 92,
-            traffic: "3.6M",
-            price: 30000,
-            estimate: 1,
-            details: "rolling stone",
+            itemName: "Youtube Community Post",
+            duration: "",
+            price: 500,
+            details: "Youtube Video",
           },
           {
-            itemName: "coindesk",
-            dr: 90,
-            da: 91,
-            traffic: "2.3M",
-            price: 26000,
-            estimate: 1,
-            details: "coin desk",
+            itemName: "Instagram / Facebook Reel",
+            duration: "60-90 seconds",
+            price: 1250,
+            details: "Youtube Video",
+          },
+          {
+            itemName: "TikTok Post",
+            duration: "60-90 seconds",
+            price: 1250,
+            details: "Youtube Video",
           },
         ]}
-        initialContentServices={[
+        honeyHoleItems={[
           {
-            itemName: "Linkable Content",
-            price: 700,
-            details: "linkable content",
+            itemName: "Full Feature",
+            duration: "7 days",
+            price: 2500,
+            details: "Honey Hole",
           },
           {
-            itemName: "Keyword Content",
-            price: 700,
-            details: "keyword content",
+            itemName: "Featured Tile",
+            duration: "1 month",
+            price: 1250,
+            details: "Honey Hole",
           },
           {
-            itemName: "Content Road Map",
+            itemName: "Banner Ad",
+            duration: "30 days",
+            price: 1650,
+            details: "Honey Hole",
+          },
+        ]}
+        emailItems={[
+          {
+            itemName: "Editorial Feature",
+            duration: "1 week",
             price: 1500,
-            details: "content road map",
+            details: "Honey Hole",
           },
-        ]}
-        initialTechnicalServices={[
           {
-            itemName: "Advanced Content",
-            price: 1200,
-            details: "advanced content",
+            itemName: "Exclusive Deal",
+            duration: "1 week",
+            price: 750,
+            details: "Honey Hole",
           },
-          { itemName: "Website Audit", price: 2000, details: "website audit" },
           {
-            itemName: "Schema Optimization",
-            price: 300,
-            details: "schema optimization",
+            itemName: "Banner Ad",
+            duration: "1 week",
+            price: 500,
+            details: "Honey Hole",
           },
         ]}
       />

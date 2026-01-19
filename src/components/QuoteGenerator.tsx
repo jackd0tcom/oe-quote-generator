@@ -2,60 +2,35 @@ import { useState } from "react";
 import DetailsView from "./DetailsView";
 import QuoteView from "./QuoteView";
 
-interface Service {
+interface Item {
   itemName: string;
-  price: number;
-  estimate: number;
-  details: string;
-}
-
-interface ServiceItem extends Service {
-  quantity: number;
-}
-
-interface OtherService {
-  itemName: string;
+  duration: string;
   price: number;
   details: string;
 }
 
-interface OtherServiceItem extends OtherService {
-  quantity: number;
-}
-
-interface ultraPremiums {
-  itemName: string;
-  dr: number;
-  da: number;
-  traffic: string;
-  price: number;
-  estimate: number;
-  details: string;
-}
-
-interface ultraPremiumItems extends ultraPremiums {
+interface ServiceItem extends Item {
   quantity: number;
 }
 
 interface IslandProps {
-  initialServices: Service[];
-  initialUltraPremiums: ultraPremiums[];
-  initialContentServices: OtherService[];
-  initialTechnicalServices: OtherService[];
+  youtubeItems: Item[];
+  youtubeAddOns: Item[];
+  honeyHoleItems: Item[];
+  emailItems: Item[];
 }
 
 export default function QuoteGenerator({
-  initialServices,
-  initialUltraPremiums,
-  initialContentServices,
-  initialTechnicalServices,
-  showQuoteButton,
+  youtubeItems,
+  youtubeAddOns,
+  honeyHoleItems,
+  emailItems,
 }: IslandProps): JSX.Element {
-  const [showUltraPremium, setShowUltraPremium] = useState(false);
+  const [showYTAddons, setShowYTAddons] = useState(false);
   const [monthlyTerm, setMonthlyTerm] = useState(3);
-  const [showLinkBuilding, setShowLinkBuilding] = useState(false);
-  const [showContent, setShowContent] = useState(false);
-  const [showTechincal, setShowTechnical] = useState(false);
+  const [showYoutube, setShowYoutube] = useState(false);
+  const [showHoneyHole, setShowHoneyHole] = useState(false);
+  const [showEmail, setsShowEmail] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [showQuote, setShowQuote] = useState(false);
   const [details, setDetails] = useState({
@@ -63,48 +38,38 @@ export default function QuoteGenerator({
     price: 700,
     details: "linkable content",
   });
-  const [rows, setRows] = useState<ServiceItem[]>(() => {
-    if (!initialServices) return [];
-    return initialServices.map((service) => ({
-      ...service,
+  const [youtubeRows, setYoutubeRows] = useState<ServiceItem[]>(() => {
+    if (!youtubeItems) return [];
+    return youtubeItems.map((item) => ({
+      ...item,
       quantity: 0,
     }));
   });
-  const [ultraPremiumRows, setUltraPremiumRows] = useState<ultraPremiumItems[]>(
+  const [youtubeAddOnRows, setYoutubeAddOnRows] = useState<ServiceItem[]>(
     () => {
-      if (!initialUltraPremiums) return [];
-      return initialUltraPremiums.map((premium) => ({
-        ...premium,
+      if (!youtubeAddOns) return [];
+      return youtubeAddOns.map((item) => ({
+        ...item,
         quantity: 0,
       }));
     },
   );
-  const [contentServiceRows, setContentServiceRows] = useState<
-    OtherServiceItem[]
-  >(() => {
-    if (!initialContentServices) return [];
-    return initialContentServices.map((service) => ({
-      ...service,
+  const [honeyHoleRows, setHoneyHoleRows] = useState<ServiceItem[]>(() => {
+    if (!honeyHoleItems) return [];
+    return honeyHoleItems.map((item) => ({
+      ...item,
       quantity: 0,
     }));
   });
-  const [technicalServiceRows, setTechnicalServiceRows] = useState<
-    OtherServiceItem[]
-  >(() => {
-    if (!initialTechnicalServices) return [];
-    return initialTechnicalServices.map((service) => ({
-      ...service,
+  const [emailRows, setEmailRows] = useState<ServiceItem[]>(() => {
+    if (!emailItems) return [];
+    return emailItems.map((item) => ({
+      ...item,
       quantity: 0,
     }));
   });
 
-  const allRows = [
-    ...rows,
-    ...contentServiceRows,
-    ...ultraPremiumRows,
-    ...contentServiceRows,
-    ...technicalServiceRows,
-  ];
+  const allRows = [...youtubeRows, ...honeyHoleRows];
 
   const cart = allRows.filter((row) => row.quantity > 0);
 
@@ -128,20 +93,20 @@ export default function QuoteGenerator({
       console.log(value);
       setMonthlyTerm(value);
     }
-    if (type === "links") {
-      setRows((prevRows) => {
+    if (type === "youtube") {
+      setYoutubeRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
         return newRows;
       });
     } else if (type === "content") {
-      setContentServiceRows((prevRows) => {
+      setHoneyHoleRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
         return newRows;
       });
     } else if (type === "technical") {
-      setTechnicalServiceRows((prevRows) => {
+      setEmailRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
         return newRows;
@@ -152,19 +117,19 @@ export default function QuoteGenerator({
   // Handles updating the math for rows except for ultra premium rows
   const updatePrice = (type: string, index: number, value: number) => {
     if (type === "links") {
-      setRows((prevRows) => {
+      setYoutubeRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].price = Number(value);
         return newRows;
       });
     } else if (type === "content") {
-      setContentServiceRows((prevRows) => {
+      setHoneyHoleRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].price = value;
         return newRows;
       });
     } else if (type === "technical") {
-      setTechnicalServiceRows((prevRows) => {
+      setEmailRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].price = value;
         return newRows;
@@ -172,54 +137,31 @@ export default function QuoteGenerator({
     }
   };
 
-  const premiumTotal: number = ultraPremiumRows.reduce(
+  const linkPriceTotal: number = youtubeRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
   );
-
-  // Handles updating the math for the ultra premium rows
-  const updatePremium = (index: number, value: number) => {
-    setUltraPremiumRows((prevRows) => {
-      const newRows = [...prevRows];
-      newRows[index].quantity = value;
-      return newRows;
-    });
-  };
-
-  const linkPriceTotal: number = rows.reduce(
+  const contentPriceTotal = honeyHoleRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
   );
-  const contentPriceTotal = contentServiceRows.reduce(
-    (acc, row) => acc + row.price * row.quantity,
-    0,
-  );
-  const technicalPriceTotal = technicalServiceRows.reduce(
+  const technicalPriceTotal = emailRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
   );
 
   const grandTotal: number =
-    linkPriceTotal + contentPriceTotal + premiumTotal + technicalPriceTotal;
+    linkPriceTotal + contentPriceTotal + technicalPriceTotal;
 
-  const linkBuildingServicesTotal: number = rows.reduce(
-    (acc, row) => acc + row.estimate * row.quantity,
-    0,
-  );
-  const ultraPremiumTotal: number = ultraPremiumRows.reduce(
+  const linkBuildingServicesTotal: number = youtubeRows.reduce(
     (acc, row) => acc + row.estimate * row.quantity,
     0,
   );
 
-  const estimatedLinks: number =
-    linkBuildingServicesTotal >= 0
-      ? linkBuildingServicesTotal
-      : 0 + ultraPremiumTotal >= 0
-        ? ultraPremiumTotal
-        : 0;
+  const estimatedLinks: number = linkBuildingServicesTotal;
 
   const costPerLink: number =
-    estimatedLinks > 0 ? (linkPriceTotal + premiumTotal) / estimatedLinks : 0;
+    estimatedLinks > 0 ? linkPriceTotal / estimatedLinks : 0;
 
   // Reusable icon for collapse state next to table heading
   const carat = (state) => {
@@ -263,19 +205,17 @@ export default function QuoteGenerator({
         <div className="quote-generator-section">
           <div
             className="heading-toggle"
-            onClick={() =>
-              handleVisibilityToggle(showLinkBuilding, setShowLinkBuilding)
-            }
+            onClick={() => handleVisibilityToggle(showYoutube, setShowYoutube)}
           >
             <h3 className="rows-container-heading link-building-services">
-              Link Building Services
+              Youtube
             </h3>
-            {carat(showLinkBuilding)}
+            {carat(showYoutube)}
           </div>
           <>
             <div
               className={
-                showLinkBuilding
+                showYoutube
                   ? "rows-container rows-visible"
                   : "rows-container rows-hidden"
               }
@@ -286,7 +226,7 @@ export default function QuoteGenerator({
                 <p>Price</p>
                 <p>Total</p>
               </div>
-              {rows.map((row, index) => {
+              {youtubeRows.map((row, index) => {
                 return (
                   <div className="service-row">
                     <p
@@ -299,6 +239,53 @@ export default function QuoteGenerator({
                       {row.itemName}
                     </p>
                     <input
+                      className="calculator-input"
+                      type="number"
+                      value={row.quantity >= 1 ? row.quantity : ""}
+                      onChange={(e) => {
+                        updateQuantity(
+                          "youtube",
+                          index,
+                          Number(e.target.value),
+                        );
+                        if (Number(e.target.value) > 0) {
+                          setShowYTAddons(true);
+                        } else setShowYTAddons(false);
+                      }}
+                    />
+                    <div className="calculator-price-wrapper">
+                      <p className="dollar-sign">$</p>
+                      <input
+                        className="price-input"
+                        type="number"
+                        value={Number(row.price).toString()}
+                        onChange={(e) => {
+                          updatePrice("links", index, Number(e.target.value));
+                        }}
+                      />
+                    </div>
+                    <p>{formatDollar.format(row.price * row.quantity)}</p>
+                  </div>
+                );
+              })}
+              {youtubeAddOnRows.map((row, index) => {
+                return (
+                  <div
+                    className={
+                      showYTAddons ? "service-row" : "service-row greyed-add-on"
+                    }
+                  >
+                    <p
+                      className="row-title"
+                      onClick={() => {
+                        setDetails(row);
+                        setShowDetails(true);
+                      }}
+                    >
+                      {row.itemName}
+                    </p>
+                    <input
+                      disabled={!showYTAddons}
                       className="calculator-input"
                       type="number"
                       value={row.quantity >= 1 ? row.quantity : ""}
@@ -321,72 +308,22 @@ export default function QuoteGenerator({
                   </div>
                 );
               })}
-              <div
-                className="heading-toggle premium-button"
-                onClick={() =>
-                  handleVisibilityToggle(showUltraPremium, setShowUltraPremium)
-                }
-              >
-                {carat(showUltraPremium)}
-                <h4 id="ultra-premium">Ultra Premium Links </h4>
-              </div>
-              <div
-                className={
-                  showUltraPremium
-                    ? "ultra-premium-wrapper rows-visible"
-                    : "ultra-premium-wrapper rows-hidden"
-                }
-              >
-                <div className="ultra-premium-row ultra-head">
-                  <p></p>
-                  <p>Qty</p>
-                  <p>Price</p>
-                  <p>DR</p>
-                  <p>DA</p>
-                  <p>Traffic</p>
-                </div>
-                {ultraPremiumRows.map((row, index) => {
-                  return (
-                    <div className="ultra-premium-row">
-                      <p
-                        className="row-title"
-                        onClick={() => {
-                          setDetails(row);
-                          setShowDetails(true);
-                        }}
-                      >
-                        {row.itemName}
-                      </p>
-                      <input
-                        className="calculator-input"
-                        type="number"
-                        value={row.quantity >= 1 ? row.quantity : ""}
-                        onChange={(e) =>
-                          updatePremium(index, Number(e.target.value))
-                        }
-                      />
-                      <p>{formatDollar.format(row.price)}</p>
-                      <p>{row.dr}</p>
-                      <p>{row.da}</p>
-                      <p>{row.traffic}</p>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
           </>
         </div>
         <div className="quote-generator-section">
           <div
             className="heading-toggle"
-            onClick={() => handleVisibilityToggle(showContent, setShowContent)}
+            onClick={() =>
+              handleVisibilityToggle(showHoneyHole, setShowHoneyHole)
+            }
           >
-            <h3 className="rows-container-heading">Content Services</h3>
-            {carat(showContent)}
+            <h3 className="rows-container-heading">Honey Hole</h3>
+            {carat(showHoneyHole)}
           </div>
           <div
             className={
-              showContent
+              showHoneyHole
                 ? "rows-container rows-visible"
                 : "rows-container rows-hidden"
             }
@@ -397,7 +334,7 @@ export default function QuoteGenerator({
               <p>Price</p>
               <p>Total</p>
             </div>
-            {contentServiceRows.map((row, index) => {
+            {honeyHoleRows.map((row, index) => {
               return (
                 <div className="service-row">
                   <p
@@ -437,16 +374,14 @@ export default function QuoteGenerator({
         <div className="quote-generator-section">
           <div
             className="heading-toggle"
-            onClick={() =>
-              handleVisibilityToggle(showTechincal, setShowTechnical)
-            }
+            onClick={() => handleVisibilityToggle(showEmail, setsShowEmail)}
           >
-            <h3 className="rows-container-heading">Technical Services</h3>
-            {carat(showTechincal)}
+            <h3 className="rows-container-heading">Email Newsletter</h3>
+            {carat(showEmail)}
           </div>
           <div
             className={
-              showTechincal
+              showEmail
                 ? "rows-container rows-visible"
                 : "rows-container rows-hidden"
             }
@@ -457,7 +392,7 @@ export default function QuoteGenerator({
               <p>Price</p>
               <p>Total</p>
             </div>
-            {technicalServiceRows.map((row, index) => {
+            {emailRows.map((row, index) => {
               return (
                 <div className="service-row">
                   <p
@@ -501,14 +436,14 @@ export default function QuoteGenerator({
             <p>Total</p>
             <p>{formatDollar.format(grandTotal)}</p>
           </div>
-          <div className="foot-row">
+          {/* <div className="foot-row">
             <p>Estimated Links</p>
             <p>{estimatedLinks}</p>
-          </div>
-          <div className="foot-row">
+          </div> */}
+          {/* <div className="foot-row">
             <p>Cost Per Link</p>
             <p>{!costPerLink ? "$0" : formatDollar.format(costPerLink)}</p>
-          </div>
+          </div> */}
           <div className="foot-row">
             <p className="monthly-term">Monthly Term</p>
             <input
@@ -528,14 +463,14 @@ export default function QuoteGenerator({
             </p>
           </div>
         </div>
-        {showQuoteButton && (
+        {
           <button
             onClick={() => setShowQuote(true)}
             className="quote-generator-submit"
           >
-            Submit My Quote
+            View Quote
           </button>
-        )}
+        }
       </div>
     </div>
   );
