@@ -45,13 +45,15 @@ export default function QuoteGenerator({
       quantity: 0,
     }));
   });
-  const [youtubeAddOnRows] = useState<ServiceItem[]>(() => {
-    if (!youtubeAddOns) return [];
-    return youtubeAddOns.map((item) => ({
-      ...item,
-      quantity: 0,
-    }));
-  });
+  const [youtubeAddOnRows, setYoutubeAddOnRows] = useState<ServiceItem[]>(
+    () => {
+      if (!youtubeAddOns) return [];
+      return youtubeAddOns.map((item) => ({
+        ...item,
+        quantity: 0,
+      }));
+    },
+  );
   const [honeyHoleRows, setHoneyHoleRows] = useState<ServiceItem[]>(() => {
     if (!honeyHoleItems) return [];
     return honeyHoleItems.map((item) => ({
@@ -91,19 +93,28 @@ export default function QuoteGenerator({
       console.log(value);
       setMonthlyTerm(value);
     }
+    if (type === "addOns") {
+      setYoutubeAddOnRows((prevRows) => {
+        const newRows = [...prevRows];
+        newRows[index].quantity = value;
+        return newRows;
+      });
+    }
     if (type === "youtube") {
       setYoutubeRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
         return newRows;
       });
-    } else if (type === "content") {
+    }
+    if (type === "content") {
       setHoneyHoleRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
         return newRows;
       });
-    } else if (type === "technical") {
+    }
+    if (type === "technical") {
       setEmailRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
@@ -291,7 +302,7 @@ export default function QuoteGenerator({
                       type="number"
                       value={row.quantity >= 1 ? row.quantity : ""}
                       onChange={(e) =>
-                        updateQuantity("links", index, Number(e.target.value))
+                        updateQuantity("addOns", index, Number(e.target.value))
                       }
                     />
                     <div className="calculator-price-wrapper">
