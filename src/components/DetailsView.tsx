@@ -1,16 +1,26 @@
 import { useRef, useEffect } from "react";
 
+interface DetailsViewProps {
+  data: {
+    itemName: string;
+    price: number;
+    details: string;
+  };
+  setShowDetails: (showDetails: boolean) => void;
+  showDetails: boolean;
+}
+
 export default function DetailsView({
   data,
   setShowDetails,
   showDetails,
-}): JSX.Element {
+}: DetailsViewProps): React.JSX.Element {
   const detailsRef = useRef(null);
 
   // // Handles blur
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (detailsRef.current && !detailsRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (detailsRef.current && !(detailsRef.current as HTMLElement).contains(event.target as Node)) {
         setShowDetails(false);
       }
     };

@@ -1,12 +1,29 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 
-// Helper defined outside component to avoid recreation on every render
-const getHubSpotCookie = () => {
-  const name = "hubspotutk";
-  // Regex searches for "hubspotutk=" preceded by start of string or a space
-  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-  return match ? match[2] : null;
-};
+interface Item {
+  itemName: string;
+  duration: string;
+  price: number;
+  details: string;
+}
+
+interface ServiceItem extends Item {
+  quantity: number;
+}
+
+interface QuoteViewProps {
+  data: {
+    total: number;
+    estimatedLinks: number;
+    costPerLink: string;
+    monthlyTerm: number;
+    monthlyCost: string;
+  };
+  setShowQuote: (showQuote: boolean) => void;
+  showQuote: boolean;
+  formatDollar: Intl.NumberFormat;
+  cart: ServiceItem[];
+}
 
 export default function QuoteView({
   data,
@@ -14,19 +31,22 @@ export default function QuoteView({
   showQuote,
   formatDollar,
   cart,
-}): JSX.Element {
+}: QuoteViewProps): React.JSX.Element {
   const detailsRef = useRef(null);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [website, setWebsite] = useState("");
-  const [status, setStatus] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [jobTitle, setJobTitle] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [website, setWebsite] = useState("");
+  // const [status, setStatus] = useState("");
 
   // // Handles blur
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (detailsRef.current && !detailsRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        detailsRef.current &&
+        !(detailsRef.current as HTMLElement).contains(event.target as Node)
+      ) {
         setShowQuote(false);
       }
     };
@@ -40,62 +60,62 @@ export default function QuoteView({
     };
   }, [showQuote]);
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setStatus("submitting");
-    const hutk = getHubSpotCookie();
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+  //   setStatus("submitting");
+  //   const hutk = getHubSpotCookie();
 
-    const payload = {
-      fields: [
-        {
-          name: "firstName",
-          value: firstName,
-        },
-        {
-          name: "lastName",
-          value: lastName,
-        },
-        {
-          name: "jobTitle",
-          value: jobTitle,
-        },
-        {
-          name: "email",
-          value: email,
-        },
-        {
-          name: "website",
-          value: website,
-        },
-      ],
-      context: {
-        hutk: hutk,
-        pageUri: window.location.href,
-        pageName: document.title,
-      },
-    };
-    try {
-      const response = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        },
-      );
+  //   const payload = {
+  //     fields: [
+  //       {
+  //         name: "firstName",
+  //         value: firstName,
+  //       },
+  //       {
+  //         name: "lastName",
+  //         value: lastName,
+  //       },
+  //       {
+  //         name: "jobTitle",
+  //         value: jobTitle,
+  //       },
+  //       {
+  //         name: "email",
+  //         value: email,
+  //       },
+  //       {
+  //         name: "website",
+  //         value: website,
+  //       },
+  //     ],
+  //     context: {
+  //       hutk: hutk,
+  //       pageUri: window.location.href,
+  //       pageName: document.title,
+  //     },
+  //   };
+  //   try {
+  //     const response = await fetch(
+  //       `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(payload),
+  //       },
+  //     );
 
-      if (response.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
-      setStatus("error");
-      console.log(error);
-    }
-  };
+  //     if (response.ok) {
+  //       setStatus("success");
+  //     } else {
+  //       setStatus("error");
+  //     }
+  //   } catch (error) {
+  //     setStatus("error");
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="calculator-details-overlay">
@@ -150,7 +170,7 @@ export default function QuoteView({
             </div>
           </div>
         </div>
-        <div className="quote-form-wrapper">
+        {/* <div className="quote-form-wrapper">
           <form onSubmit={handleSubmit} className="submit-quote-form" action="">
             <input
               type="text"
@@ -188,7 +208,7 @@ export default function QuoteView({
             />
             <button className="quote-form-button">SUBMIT</button>
           </form>
-        </div>
+        </div> */}
       </div>
     </div>
   );

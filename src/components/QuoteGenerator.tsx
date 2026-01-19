@@ -25,12 +25,12 @@ export default function QuoteGenerator({
   youtubeAddOns,
   honeyHoleItems,
   emailItems,
-}: IslandProps): JSX.Element {
+}: IslandProps): React.JSX.Element {
   const [showYTAddons, setShowYTAddons] = useState(false);
   const [monthlyTerm, setMonthlyTerm] = useState(3);
   const [showYoutube, setShowYoutube] = useState(false);
   const [showHoneyHole, setShowHoneyHole] = useState(false);
-  const [showEmail, setsShowEmail] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [showQuote, setShowQuote] = useState(false);
   const [details, setDetails] = useState({
@@ -45,15 +45,13 @@ export default function QuoteGenerator({
       quantity: 0,
     }));
   });
-  const [youtubeAddOnRows, setYoutubeAddOnRows] = useState<ServiceItem[]>(
-    () => {
-      if (!youtubeAddOns) return [];
-      return youtubeAddOns.map((item) => ({
-        ...item,
-        quantity: 0,
-      }));
-    },
-  );
+  const [youtubeAddOnRows] = useState<ServiceItem[]>(() => {
+    if (!youtubeAddOns) return [];
+    return youtubeAddOns.map((item) => ({
+      ...item,
+      quantity: 0,
+    }));
+  });
   const [honeyHoleRows, setHoneyHoleRows] = useState<ServiceItem[]>(() => {
     if (!honeyHoleItems) return [];
     return honeyHoleItems.map((item) => ({
@@ -154,7 +152,7 @@ export default function QuoteGenerator({
     linkPriceTotal + contentPriceTotal + technicalPriceTotal;
 
   const linkBuildingServicesTotal: number = youtubeRows.reduce(
-    (acc, row) => acc + row.estimate * row.quantity,
+    (acc, row) => acc + row.price * row.quantity,
     0,
   );
 
@@ -164,14 +162,17 @@ export default function QuoteGenerator({
     estimatedLinks > 0 ? linkPriceTotal / estimatedLinks : 0;
 
   // Reusable icon for collapse state next to table heading
-  const carat = (state) => {
+  const carat = (state: boolean) => {
     return (
       <p className={state ? "carat toggled" : "carat"}>{state ? "-" : "+"}</p>
     );
   };
 
   // Handles the collapsing / uncollapsing of tables
-  const handleVisibilityToggle = (state, setState) => {
+  const handleVisibilityToggle = (
+    state: boolean,
+    setState: (state: boolean) => void,
+  ) => {
     if (!state) {
       setState(true);
     } else setState(false);
@@ -374,7 +375,7 @@ export default function QuoteGenerator({
         <div className="quote-generator-section">
           <div
             className="heading-toggle"
-            onClick={() => handleVisibilityToggle(showEmail, setsShowEmail)}
+            onClick={() => handleVisibilityToggle(showEmail, setShowEmail)}
           >
             <h3 className="rows-container-heading">Email Newsletter</h3>
             {carat(showEmail)}
