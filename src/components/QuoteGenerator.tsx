@@ -146,21 +146,25 @@ export default function QuoteGenerator({
     }
   };
 
-  const linkPriceTotal: number = youtubeRows.reduce(
+  const youtubeTotal: number = youtubeRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
   );
-  const contentPriceTotal = honeyHoleRows.reduce(
+  const youtubeAddOnsTotal: number = youtubeAddOnRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
   );
-  const technicalPriceTotal = emailRows.reduce(
+  const honeyHoleTotal = honeyHoleRows.reduce(
+    (acc, row) => acc + row.price * row.quantity,
+    0,
+  );
+  const emailTotal = emailRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
   );
 
   const grandTotal: number =
-    linkPriceTotal + contentPriceTotal + technicalPriceTotal;
+    youtubeTotal + youtubeAddOnsTotal + honeyHoleTotal + emailTotal;
 
   const linkBuildingServicesTotal: number = youtubeRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
@@ -168,9 +172,6 @@ export default function QuoteGenerator({
   );
 
   const estimatedLinks: number = linkBuildingServicesTotal;
-
-  const costPerLink: number =
-    estimatedLinks > 0 ? linkPriceTotal / estimatedLinks : 0;
 
   // Reusable icon for collapse state next to table heading
   const carat = (state: boolean) => {
