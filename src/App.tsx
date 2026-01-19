@@ -11,7 +11,7 @@ function App() {
             src="https://outdoorempire.com/wp-content/uploads/2023/07/cropped-cropped-cropped-OutdoorEmpire_LogoDesign_ClearBack-Color-22.png"
             alt=""
           />
-          <h1>Quote Generator</h1>
+          <h1>Quote Calculator</h1>
         </div>
       </div>
       <QuoteGenerator
