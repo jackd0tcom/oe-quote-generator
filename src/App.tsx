@@ -37,6 +37,16 @@ function App() {
               <a target=_blank href="https://www.youtube.com/watch?v=igxsIGNkwuk">
                 Example
               </a>
+              <br/>
+              <br/>
+              <a target=_blank href="https://www.youtube.com/watch?v=AKS_k30IXCk">
+                Example
+              </a>
+              <br/>
+              <br/>
+              <a target=_blank href="https://www.youtube.com/watch?v=erMTLJn0sL8">
+                Example
+              </a>
             `,
           },
           {
@@ -50,6 +60,19 @@ function App() {
                     It will then be nested within an appropriate video appearing in our editorial schedule.
 
               </p>
+              <a target=_blank href="https://youtu.be/5YyKsh7YHL0?si=bonE1j6qzIs_4Onb&t=166">
+                Example
+              </a>
+              <br/>
+              <br/>
+              <a target=_blank href="https://youtu.be/0OXDi7Abfc0?si=8lWObbnoWJ5y9hO6&t=801">
+                Example
+              </a>
+              <br/>
+              <br/>
+              <a target=_blank href="https://youtu.be/jKk1q_wYYqo?si=VRHcbdu8kvAd-fJb&t=290">
+                Example
+              </a>
             `,
           },
         ]}
@@ -58,11 +81,25 @@ function App() {
             itemName: "Short Form Video",
             duration: "60-90 seconds",
             price: 2500,
-            details: `Our masterful video editors will make a vertical format video 20-30 seconds in      duration that will be both eye catching and compelling.
+            details: `<p>Our masterful video editors will make a vertical format video 20-30 seconds in      duration that will be both eye catching and compelling.
 
             That video will then be posted to our Outdoor Empire YouTube, Instagram and Tiktok accounts.
 
             You’ll be able to post it anywhere you’d like after that. It’s your video.
+            </p>
+              <a target=_blank href="https://www.youtube.com/watch?v=a1_VLujfKfc">
+                Example
+              </a>
+              <br/>
+              <br/>
+              <a target=_blank href="https://www.youtube.com/shorts/6u-bikRxuDs">
+                Example
+              </a>
+              <br/>
+              <br/>
+              <a target=_blank href="https://www.youtube.com/shorts/-US9HZRRtG0">
+                Example
+              </a>
             `,
           },
           {
