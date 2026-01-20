@@ -37,6 +37,7 @@ export default function QuoteGenerator({
     itemName: "Linkable Content",
     price: 700,
     details: "linkable content",
+    duration: "",
   });
   const [youtubeRows, setYoutubeRows] = useState<ServiceItem[]>(() => {
     if (!youtubeItems) return [];
