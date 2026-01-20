@@ -182,13 +182,6 @@ export default function QuoteGenerator({
   const grandTotal: number =
     youtubeTotal + youtubeAddOnsTotal + honeyHoleTotal + emailTotal;
 
-  const linkBuildingServicesTotal: number = youtubeRows.reduce(
-    (acc, row) => acc + row.price * row.quantity,
-    0,
-  );
-
-  const estimatedLinks: number = linkBuildingServicesTotal;
-
   // Reusable icon for collapse state next to table heading
   const carat = (state: boolean) => {
     return (
@@ -212,8 +205,6 @@ export default function QuoteGenerator({
         <QuoteView
           data={{
             total: grandTotal,
-            estimatedLinks: estimatedLinks,
-            costPerLink: !costPerLink ? "$0" : formatDollar.format(costPerLink),
             monthlyTerm: monthlyTerm,
             monthlyCost: formatDollar.format(grandTotal / monthlyTerm),
           }}

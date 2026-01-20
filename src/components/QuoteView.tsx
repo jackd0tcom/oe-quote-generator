@@ -14,8 +14,6 @@ interface ServiceItem extends Item {
 interface QuoteViewProps {
   data: {
     total: number;
-    estimatedLinks: number;
-    costPerLink: string;
     monthlyTerm: number;
     monthlyCost: string;
   };
@@ -151,14 +149,6 @@ export default function QuoteView({
             <div className="quote-row">
               <p>Total</p>
               <p>{formatDollar.format(data.total)}</p>
-            </div>
-            <div className="quote-row">
-              <p>Estimated Links</p>
-              <p>{data.estimatedLinks}</p>
-            </div>
-            <div className="quote-row">
-              <p>Cost Per Link</p>
-              <p>{data.costPerLink}</p>
             </div>
             <div className="quote-row">
               <p className="monthly-term">Monthly Term</p>
