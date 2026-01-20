@@ -34,19 +34,13 @@ function App() {
                       You’ll then get full access to the files for your own
                       usage for advertising and promotional purposes.
               </p>
-              <a target=_blank href="https://www.youtube.com/watch?v=igxsIGNkwuk">
-                Example
-              </a>
+              <iframe width="100%" height="600px" src="https://www.youtube.com/embed/igxsIGNkwuk?si=Xtiapzt3fRM2Ro-R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
               <br/>
               <br/>
-              <a target=_blank href="https://www.youtube.com/watch?v=AKS_k30IXCk">
-                Example
-              </a>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/AKS_k30IXCk?si=d-P3tkZi-J4sgsjI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               <br/>
               <br/>
-              <a target=_blank href="https://www.youtube.com/watch?v=erMTLJn0sL8">
-                Example
-              </a>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/erMTLJn0sL8?si=equnbSbMqgsEwcRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             `,
           },
           {
@@ -60,19 +54,13 @@ function App() {
                     It will then be nested within an appropriate video appearing in our editorial schedule.
 
               </p>
-              <a target=_blank href="https://youtu.be/5YyKsh7YHL0?si=bonE1j6qzIs_4Onb&t=166">
-                Example
-              </a>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/5YyKsh7YHL0?si=II9hcP2CUXdrLVbA&amp;start=166" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
               <br/>
               <br/>
-              <a target=_blank href="https://youtu.be/0OXDi7Abfc0?si=8lWObbnoWJ5y9hO6&t=801">
-                Example
-              </a>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/0OXDi7Abfc0?si=y61BIbDFxHh5NHQX&amp;start=801" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               <br/>
               <br/>
-              <a target=_blank href="https://youtu.be/jKk1q_wYYqo?si=VRHcbdu8kvAd-fJb&t=290">
-                Example
-              </a>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/jKk1q_wYYqo?si=m7D2WyAclL-upjp-&amp;start=290" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             `,
           },
         ]}
@@ -87,9 +75,7 @@ function App() {
 
             You’ll be able to post it anywhere you’d like after that. It’s your video.
             </p>
-              <a target=_blank href="https://www.youtube.com/watch?v=a1_VLujfKfc">
-                Example
-              </a>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/a1_VLujfKfc?si=fv00BUMOdgzwWuDJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               <br/>
               <br/>
               <a target=_blank href="https://www.youtube.com/shorts/6u-bikRxuDs">
@@ -100,6 +86,23 @@ function App() {
               <a target=_blank href="https://www.youtube.com/shorts/-US9HZRRtG0">
                 Example
               </a>
+              <br/>
+              <br/>
+              <div className="socials-wrapper">
+                <a target=_blank href="https://www.instagram.com/outdoorempirecom/?hl=en">
+                  Instagram
+                </a>
+              <br/>
+              <br/>
+                <a target=_blank href="https://www.tiktok.com/@outdoorempirecom">
+                  TikTok
+                </a>
+              <br/>
+              <br/>
+                <a target=_blank href="https://www.youtube.com/@theoutdoorempire/shorts">
+                  Youtube Shorts
+                </a>
+              </div>
             `,
           },
           {
@@ -127,7 +130,13 @@ function App() {
             itemName: "Full Feature",
             duration: "7 days",
             price: 2500,
-            details: "Honey Hole",
+            details: `Get the full treatment! Get a featured tile in our stack, a banner ad and a special section dedicated to your product. Pairs well with a short video.
+            <br/>
+            <br/>
+            <a target=_blank href="https://outdoorempire.com/thehoneyhole/">
+                Example
+              </a>
+            `,
           },
           {
             itemName: "Featured Tile",
