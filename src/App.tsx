@@ -109,18 +109,18 @@ function App() {
             details:
               "A YouTube community post is an engaging tool for boosting audience engagement and strengthening the community, often acting like a mini-social media feed tied directly to the YouTube channel.",
           },
-          // {
-          //   itemName: "Instagram / Facebook Reel",
-          //   duration: "60-90 seconds",
-          //   price: 1250,
-          //   details: "Youtube Video",
-          // },
-          // {
-          //   itemName: "TikTok Post",
-          //   duration: "60-90 seconds",
-          //   price: 1250,
-          //   details: "Youtube Video",
-          // },
+          {
+            itemName: "Video Intro Featured Logo",
+            duration: "60-90 seconds",
+            price: 500,
+            details: ``,
+          },
+          {
+            itemName: "Full Licensing of Content",
+            duration: "60-90 seconds",
+            price: 1000,
+            details: ``,
+          },
         ]}
         honeyHoleItems={[
           {

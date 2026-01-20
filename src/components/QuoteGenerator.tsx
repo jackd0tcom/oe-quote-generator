@@ -32,6 +32,7 @@ export default function QuoteGenerator({
   const [showEmail, setShowEmail] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [showQuote, setShowQuote] = useState(false);
+  const [fullSend, setFullSend] = useState(false);
   const [details, setDetails] = useState({
     itemName: "Linkable Content",
     price: 700,
@@ -160,7 +161,7 @@ export default function QuoteGenerator({
     }
   };
 
-  const showYTAddons = youtubeRows.some((row) => row.quantity > 0);
+  let showYTAddons = youtubeRows.some((row) => row.quantity > 0);
 
   const youtubeTotal: number = youtubeRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
@@ -199,6 +200,38 @@ export default function QuoteGenerator({
     } else setState(false);
   };
 
+  const handleFullSend = () => {
+    if (!fullSend) {
+      setFullSend(true);
+      setShowYoutube(true);
+      setShowHoneyHole(true);
+      setShowEmail(true);
+      updateQuantity("youtube", 0, 1);
+      updateQuantity("youtube", 1, 3);
+      updateQuantity("addOns", 2, 4);
+      updateQuantity("addOns", 3, 1);
+      updateQuantity("addOns", 0, 4);
+      updateQuantity("email", 0, 2);
+      updateQuantity("honeyHole", 1, 1);
+      updateQuantity("honeyHole", 2, 6);
+      setMonthlyTerm(6);
+    } else {
+      setFullSend(false);
+      setShowYoutube(false);
+      setShowHoneyHole(false);
+      setShowEmail(false);
+      updateQuantity("youtube", 0, 0);
+      updateQuantity("youtube", 1, 0);
+      updateQuantity("addOns", 2, 0);
+      updateQuantity("addOns", 3, 0);
+      updateQuantity("addOns", 0, 0);
+      updateQuantity("email", 0, 0);
+      updateQuantity("honeyHole", 1, 0);
+      updateQuantity("honeyHole", 2, 0);
+      setMonthlyTerm(3);
+    }
+  };
+
   return (
     <div className="quote-generator-wrapper">
       {showQuote && (
@@ -222,6 +255,10 @@ export default function QuoteGenerator({
         />
       )}
       <div className="quote-generator-table-wrapper">
+        <div className="full-send-wrapper" onClick={() => handleFullSend()}>
+          <div id="full-send-toggle" className={fullSend ? "sent" : ""}></div>
+          <h3 className="full-send-heading">Full Send Title Sponsor</h3>
+        </div>
         <div className="quote-generator-section">
           <div
             className="heading-toggle"
@@ -469,8 +506,16 @@ export default function QuoteGenerator({
         <div className="quote-generator-foot">
           <div className="foot-row">
             <p>Total</p>
-            <p>{formatDollar.format(grandTotal)}</p>
+            <p className={fullSend ? "strikethrough" : ""}>
+              {formatDollar.format(grandTotal)}
+            </p>
           </div>
+          {fullSend && (
+            <div className="foot-row">
+              <p>Full Send Bundle</p>
+              <p>{formatDollar.format(60000)}</p>
+            </div>
+          )}
           <div className="foot-row">
             <p className="monthly-term">Monthly Term</p>
             <input
@@ -486,7 +531,9 @@ export default function QuoteGenerator({
           <div className="foot-row">
             <p className="monthly">Monthly Cost</p>
             <p className="monthly">
-              {formatDollar.format(grandTotal / monthlyTerm)}
+              {!fullSend
+                ? formatDollar.format(grandTotal / monthlyTerm)
+                : formatDollar.format(10000)}
             </p>
           </div>
         </div>

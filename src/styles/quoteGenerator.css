@@ -37,9 +37,13 @@ h3 {
   position: absolute;
   top: 0;
   z-index: 0;
-  width: 100%;
   min-height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #dadcdb;
+}
+.strikethrough {
+  text-decoration: line-through;
 }
 .bg-wrapper {
   position: absolute;
@@ -47,6 +51,7 @@ h3 {
   z-index: 0;
   width: 100%;
   min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: start;
   justify-content: center;
@@ -76,6 +81,30 @@ h3 {
   padding: 20px;
   border: 2px solid black;
   background-color: white;
+}
+.full-send-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50px;
+}
+#full-send-toggle {
+  height: 20px;
+  width: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+.full-send-heading {
+  color: white;
+  margin: 0;
+}
+.sent {
+  background-color: white;
+}
+.full-send-wrapper {
+  padding: 20px;
+  background-color: #222222;
 }
 .service-row {
   display: grid;
