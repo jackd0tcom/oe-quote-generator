@@ -20,13 +20,35 @@ function App() {
             itemName: "Feature-Length Video",
             duration: "10-30 minutes",
             price: 25000,
-            details: "",
+            details: `
+              <p>
+                      Our flagship product. We’ll ideate, write, shoot and edit
+                      a 15-20 minute video that features your product in action.
+                      Chase will highlight your product's features and benefits
+                      and offer a unique perspective that will bring your
+                      product to life. <br /> <br />
+                      After the video is finished we’ll publish it on our
+                      popular channel and watch it get views.
+                      You’ll then get full access to the files for your own
+                      usage for advertising and promotional purposes.
+              </p>
+              <a target=_blank href="https://www.youtube.com/watch?v=igxsIGNkwuk">
+                Example
+              </a>
+            `,
           },
           {
             itemName: "Featured Video Integration",
             duration: "60-90 seconds",
             price: 5000,
-            details: "Youtube Video",
+            details: `
+              <p>
+                     A YouTube integration is a 60-90 second video that highlights your product and gives it life that you couldn’t get any other way.
+
+                    It will then be nested within an appropriate video appearing in our editorial schedule.
+
+              </p>
+            `,
           },
         ]}
         youtubeAddOns={[
@@ -34,13 +56,19 @@ function App() {
             itemName: "Short Form Video",
             duration: "60-90 seconds",
             price: 2500,
-            details: "Youtube Video",
+            details: `Our masterful video editors will make a vertical format video 20-30 seconds in      duration that will be both eye catching and compelling.
+
+            That video will then be posted to our Outdoor Empire YouTube, Instagram and Tiktok accounts.
+
+            You’ll be able to post it anywhere you’d like after that. It’s your video.
+            `,
           },
           {
             itemName: "Youtube Community Post",
             duration: "",
             price: 500,
-            details: "Youtube Video",
+            details:
+              "A YouTube community post is an engaging tool for boosting audience engagement and strengthening the community, often acting like a mini-social media feed tied directly to the YouTube channel.",
           },
           // {
           //   itemName: "Instagram / Facebook Reel",
