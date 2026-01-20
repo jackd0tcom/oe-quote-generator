@@ -26,7 +26,6 @@ export default function QuoteGenerator({
   honeyHoleItems,
   emailItems,
 }: PropsTypes): React.JSX.Element {
-  const [showYTAddons, setShowYTAddons] = useState(false);
   const [monthlyTerm, setMonthlyTerm] = useState(3);
   const [showYoutube, setShowYoutube] = useState(false);
   const [showHoneyHole, setShowHoneyHole] = useState(false);
@@ -161,6 +160,8 @@ export default function QuoteGenerator({
     }
   };
 
+  const showYTAddons = youtubeRows.some((row) => row.quantity > 0);
+
   const youtubeTotal: number = youtubeRows.reduce(
     (acc, row) => acc + row.price * row.quantity,
     0,
@@ -276,9 +277,6 @@ export default function QuoteGenerator({
                           index,
                           Number(e.target.value),
                         );
-                        if (Number(e.target.value) > 0) {
-                          setShowYTAddons(true);
-                        } else setShowYTAddons(false);
                       }}
                     />
                     <div className="calculator-price-wrapper">
