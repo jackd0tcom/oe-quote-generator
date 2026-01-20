@@ -13,7 +13,7 @@ interface ServiceItem extends Item {
   quantity: number;
 }
 
-interface IslandProps {
+interface PropsTypes {
   youtubeItems: Item[];
   youtubeAddOns: Item[];
   honeyHoleItems: Item[];
@@ -25,7 +25,7 @@ export default function QuoteGenerator({
   youtubeAddOns,
   honeyHoleItems,
   emailItems,
-}: IslandProps): React.JSX.Element {
+}: PropsTypes): React.JSX.Element {
   const [showYTAddons, setShowYTAddons] = useState(false);
   const [monthlyTerm, setMonthlyTerm] = useState(3);
   const [showYoutube, setShowYoutube] = useState(false);
@@ -69,9 +69,15 @@ export default function QuoteGenerator({
     }));
   });
 
-  const allRows = [...youtubeRows, ...honeyHoleRows];
+  const allRows = [
+    ...youtubeRows,
+    ...youtubeAddOnRows,
+    ...honeyHoleRows,
+    ...emailRows,
+  ];
 
-  const cart = allRows.filter((row) => row.quantity > 0);
+  let cart = [];
+  cart = allRows.filter((row) => row.quantity > 0);
 
   // Takes in number, returns it in dollar format without cents
   const formatDollar = new Intl.NumberFormat("en-US", {
@@ -107,14 +113,14 @@ export default function QuoteGenerator({
         return newRows;
       });
     }
-    if (type === "content") {
+    if (type === "honeyHole") {
       setHoneyHoleRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
         return newRows;
       });
     }
-    if (type === "technical") {
+    if (type === "email") {
       setEmailRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].quantity = value;
@@ -131,13 +137,22 @@ export default function QuoteGenerator({
         newRows[index].price = Number(value);
         return newRows;
       });
-    } else if (type === "content") {
+    }
+    if (type === "addOns") {
+      setYoutubeAddOnRows((prevRows) => {
+        const newRows = [...prevRows];
+        newRows[index].price = Number(value);
+        return newRows;
+      });
+    }
+    if (type === "honeyHole") {
       setHoneyHoleRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].price = value;
         return newRows;
       });
-    } else if (type === "technical") {
+    }
+    if (type === "email") {
       setEmailRows((prevRows) => {
         const newRows = [...prevRows];
         newRows[index].price = value;
@@ -313,7 +328,7 @@ export default function QuoteGenerator({
                         type="number"
                         value={Number(row.price).toString()}
                         onChange={(e) => {
-                          updatePrice("links", index, Number(e.target.value));
+                          updatePrice("addOns", index, Number(e.target.value));
                         }}
                       />
                     </div>
@@ -364,7 +379,7 @@ export default function QuoteGenerator({
                     type="number"
                     value={row.quantity >= 1 ? row.quantity : ""}
                     onChange={(e) =>
-                      updateQuantity("content", index, Number(e.target.value))
+                      updateQuantity("honeyHole", index, Number(e.target.value))
                     }
                   />
                   <div className="calculator-price-wrapper">
@@ -374,7 +389,7 @@ export default function QuoteGenerator({
                       type="number"
                       value={Number(row.price).toString()}
                       onChange={(e) => {
-                        updatePrice("content", index, Number(e.target.value));
+                        updatePrice("honeyHole", index, Number(e.target.value));
                       }}
                     />
                   </div>
@@ -422,7 +437,7 @@ export default function QuoteGenerator({
                     type="number"
                     value={row.quantity >= 1 ? row.quantity : ""}
                     onChange={(e) =>
-                      updateQuantity("technical", index, Number(e.target.value))
+                      updateQuantity("email", index, Number(e.target.value))
                     }
                   />
                   <div className="calculator-price-wrapper">
@@ -432,7 +447,7 @@ export default function QuoteGenerator({
                       type="number"
                       value={Number(row.price).toString()}
                       onChange={(e) => {
-                        updatePrice("technical", index, Number(e.target.value));
+                        updatePrice("email", index, Number(e.target.value));
                       }}
                     />
                   </div>
@@ -445,18 +460,28 @@ export default function QuoteGenerator({
       </div>
       <div className="quote-generator-sidebar">
         <div className="quote-generator-foot">
+          <div className="cart-row">
+            <p>Item</p>
+            <p>Qty</p>
+            <p>Total</p>
+          </div>
+          {cart && cart.length < 1 ? (
+            <p id="no-items">No items added</p>
+          ) : (
+            cart.map((item) => (
+              <div className="cart-row small-font">
+                <p>{item.itemName}</p>
+                <p>{item.quantity}</p>
+                <p>${item.quantity * item.price}</p>
+              </div>
+            ))
+          )}
+        </div>
+        <div className="quote-generator-foot">
           <div className="foot-row">
             <p>Total</p>
             <p>{formatDollar.format(grandTotal)}</p>
           </div>
-          {/* <div className="foot-row">
-            <p>Estimated Links</p>
-            <p>{estimatedLinks}</p>
-          </div> */}
-          {/* <div className="foot-row">
-            <p>Cost Per Link</p>
-            <p>{!costPerLink ? "$0" : formatDollar.format(costPerLink)}</p>
-          </div> */}
           <div className="foot-row">
             <p className="monthly-term">Monthly Term</p>
             <input

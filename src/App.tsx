@@ -20,7 +20,7 @@ function App() {
             itemName: "Feature-Length Video",
             duration: "10-30 minutes",
             price: 25000,
-            details: "Youtube Video",
+            details: "",
           },
           {
             itemName: "Featured Video Integration",
@@ -31,9 +31,9 @@ function App() {
         ]}
         youtubeAddOns={[
           {
-            itemName: "Youtube Short",
+            itemName: "Short Form Video",
             duration: "60-90 seconds",
-            price: 1250,
+            price: 2500,
             details: "Youtube Video",
           },
           {
@@ -42,18 +42,18 @@ function App() {
             price: 500,
             details: "Youtube Video",
           },
-          {
-            itemName: "Instagram / Facebook Reel",
-            duration: "60-90 seconds",
-            price: 1250,
-            details: "Youtube Video",
-          },
-          {
-            itemName: "TikTok Post",
-            duration: "60-90 seconds",
-            price: 1250,
-            details: "Youtube Video",
-          },
+          // {
+          //   itemName: "Instagram / Facebook Reel",
+          //   duration: "60-90 seconds",
+          //   price: 1250,
+          //   details: "Youtube Video",
+          // },
+          // {
+          //   itemName: "TikTok Post",
+          //   duration: "60-90 seconds",
+          //   price: 1250,
+          //   details: "Youtube Video",
+          // },
         ]}
         honeyHoleItems={[
           {

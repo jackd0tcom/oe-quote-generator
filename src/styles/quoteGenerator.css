@@ -38,7 +38,8 @@ h3 {
   gap: 20px;
   position: relative;
   margin-bottom: 15vh;
-  max-width: 1200px;
+  max-width: 1000px;
+  width: 100%;
 }
 .quote-generator-table-wrapper {
   display: flex;
@@ -113,7 +114,7 @@ h3 {
 }
 .service-row {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   column-gap: 2rem;
   align-items: baseline;
 }
@@ -193,7 +194,7 @@ h3 {
 }
 .calculator-input {
   border: none;
-  max-width: 75px;
+  max-width: 50px;
   outline: none;
   padding: 15px;
   margin-bottom: 5px;
@@ -252,6 +253,21 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.cart-row {
+  display: grid;
+  grid-template-columns: 1fr 0.25fr 0.5fr;
+  gap: 10px;
+  overflow: hidden;
+}
+.cart-row p {
+  margin: 0;
+}
+.small-font p {
+  font-size: 0.9rem;
+}
+#no-items {
+  margin: 0;
 }
 .quote-generator-submit {
   width: 100%;
@@ -314,18 +330,6 @@ h3 {
   max-width: 50px;
   padding: 10px;
   margin: 0;
-}
-/* Hides HTML input arrows */
-/* Chrome, Safari, Edge, Opera */
-.monthly-input::-webkit-outer-spin-button,
-.monthly-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-.monthly-input[type="number"] {
-  -moz-appearance: textfield;
 }
 
 .calculator-details-overlay {
