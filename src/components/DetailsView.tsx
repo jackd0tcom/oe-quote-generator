@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 interface DetailsViewProps {
   data: {
     itemName: string;
+    duration: string;
     price: number;
     details: string;
   };
@@ -20,7 +21,10 @@ export default function DetailsView({
   // // Handles blur
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (detailsRef.current && !(detailsRef.current as HTMLElement).contains(event.target as Node)) {
+      if (
+        detailsRef.current &&
+        !(detailsRef.current as HTMLElement).contains(event.target as Node)
+      ) {
         setShowDetails(false);
       }
     };
@@ -39,6 +43,7 @@ export default function DetailsView({
       <div className="calculator-details-wrapper" ref={detailsRef}>
         <div className="calculator-details-head">
           <h3>{data.itemName}</h3>
+          <p>{data.duration}</p>
           <p>${data.price}</p>
         </div>
         <div
