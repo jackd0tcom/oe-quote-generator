@@ -12,6 +12,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .header-wrapper {
   background-color: #222222;
@@ -19,6 +20,7 @@ h3 {
   padding: 20px;
   display: flex;
   justify-content: center;
+  z-index: 99;
 }
 .header {
   display: flex;
@@ -30,6 +32,28 @@ h3 {
 #logo {
   height: 60px;
   width: auto;
+}
+.bg-color {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #dadcdb;
+}
+.bg-wrapper {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  background-image: url(https://outdoorempire.com/wp-content/uploads/2023/12/Topographic-Map-Pattern-7.png);
+  background-position: center center;
+  background-size: 50%;
+  opacity: 0.1;
 }
 .quote-generator-wrapper {
   margin-top: 20px;

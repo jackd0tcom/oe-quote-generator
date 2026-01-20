@@ -14,6 +14,8 @@ function App() {
           <h1>Quote Calculator</h1>
         </div>
       </div>
+      <div className="bg-color"></div>
+      <div className="bg-wrapper"></div>
       <QuoteGenerator
         youtubeItems={[
           {
