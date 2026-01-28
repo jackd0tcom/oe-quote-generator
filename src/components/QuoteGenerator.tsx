@@ -551,67 +551,69 @@ export default function QuoteGenerator({
           </div>
         </div>
       </div>
-      <div className="quote-generator-sidebar">
-        <div className="quote-generator-foot cart-wrapper">
-          <div className="cart-row">
-            <p>Item</p>
-            <p>Qty</p>
-            <p>Total</p>
-          </div>
-          {cart && cart.length < 1 ? (
-            <p id="no-items">No items added</p>
-          ) : (
-            cart.map((item) => (
-              <div className="cart-row small-font">
-                <p>{item.itemName}</p>
-                <p>{item.quantity}</p>
-                <p>${item.quantity * item.price}</p>
-              </div>
-            ))
-          )}
-        </div>
-        <div className="quote-generator-foot">
-          <div className="foot-row">
-            <p>Total</p>
-            <p className={fullSend ? "strikethrough" : ""}>
-              {formatDollar.format(grandTotal)}
-            </p>
-          </div>
-          {fullSend && (
-            <div className="foot-row">
-              <p>Full Send Bundle</p>
-              <p>{formatDollar.format(60000)}</p>
+      <div className="quote-generator-sidebar-wrapper">
+        <div className="quote-generator-sidebar">
+          <div className="quote-generator-foot cart-wrapper">
+            <div className="cart-row">
+              <p>Item</p>
+              <p>Qty</p>
+              <p>Total</p>
             </div>
-          )}
-          <div className="foot-row">
-            <p className="monthly-term">Monthly Term</p>
-            <input
-              className="calculator-input monthly-input"
-              type="number"
-              name="monthly-term"
-              value={monthlyTerm}
-              onChange={(e) =>
-                updateQuantity("month", 0, Number(e.target.value))
-              }
-            />
+            {cart && cart.length < 1 ? (
+              <p id="no-items">No items added</p>
+            ) : (
+              cart.map((item) => (
+                <div className="cart-row small-font">
+                  <p>{item.itemName}</p>
+                  <p>{item.quantity}</p>
+                  <p>${item.quantity * item.price}</p>
+                </div>
+              ))
+            )}
           </div>
-          <div className="foot-row">
-            <p className="monthly">Monthly Cost</p>
-            <p className="monthly">
-              {!fullSend
-                ? formatDollar.format(grandTotal / monthlyTerm)
-                : formatDollar.format((grandTotal - 22850) / monthlyTerm)}
-            </p>
+          <div className="quote-generator-foot">
+            <div className="foot-row">
+              <p>Total</p>
+              <p className={fullSend ? "strikethrough" : ""}>
+                {formatDollar.format(grandTotal)}
+              </p>
+            </div>
+            {fullSend && (
+              <div className="foot-row">
+                <p>Full Send Bundle</p>
+                <p>{formatDollar.format(60000)}</p>
+              </div>
+            )}
+            <div className="foot-row">
+              <p className="monthly-term">Monthly Term</p>
+              <input
+                className="calculator-input monthly-input"
+                type="number"
+                name="monthly-term"
+                value={monthlyTerm}
+                onChange={(e) =>
+                  updateQuantity("month", 0, Number(e.target.value))
+                }
+              />
+            </div>
+            <div className="foot-row">
+              <p className="monthly">Monthly Cost</p>
+              <p className="monthly">
+                {!fullSend
+                  ? formatDollar.format(grandTotal / monthlyTerm)
+                  : formatDollar.format((grandTotal - 22850) / monthlyTerm)}
+              </p>
+            </div>
           </div>
+          {
+            <button
+              onClick={() => setShowQuote(true)}
+              className="quote-generator-submit"
+            >
+              View Quote
+            </button>
+          }
         </div>
-        {
-          <button
-            onClick={() => setShowQuote(true)}
-            className="quote-generator-submit"
-          >
-            View Quote
-          </button>
-        }
       </div>
     </div>
   );
