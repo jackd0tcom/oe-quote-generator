@@ -87,7 +87,8 @@ h3 {
   gap: 20px;
   align-items: center;
   cursor: pointer;
-  border-radius: 20px;
+  padding: 20px;
+  background-color: #222222;
 }
 #full-send-toggle {
   height: 20px;
@@ -101,10 +102,6 @@ h3 {
 }
 .sent {
   background-color: #6b9884;
-}
-.full-send-wrapper {
-  padding: 20px;
-  background-color: #222222;
 }
 .service-row {
   display: grid;
