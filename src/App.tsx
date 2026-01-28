@@ -170,7 +170,7 @@ function App() {
             details: `
             <p>Display one product on <a target=_blank href="https://outdoorempire.com/thehoneyhole">The Honey Hole</a> in a stylized version of our standard product tile for 30 days.</p>
             <p>Products that organically appear on The Honey Hole are heavily discounted, so you may consider offering a compelling promotion on a single product.</p>
-            <img class="community-image" src="public/featured tile.png"/>
+            <img class="community-image" src="/featured tile.png"/>
             `,
           },
           {
@@ -181,10 +181,10 @@ function App() {
             <p>You provide the creative and we’ll display a leaderboard banner ad (728 x 90 px) on <a href="https://outdoorempire.com/thehoneyhole" target=_blank>The Honey Hole</a> web page for 30 days.</p>
             <p>Placement will be based on a first come, first serve basis with the first ad appearing below the first row of tiles.</p>
             <p>For example:</p>
-            <img class="community-image" src="public/banner ad example 1.png"/>
-            <img class="community-image" src="public/banner ad example 2.png"/>
+            <img class="community-image" src="/banner ad example 1.png"/>
+            <img class="community-image" src="/banner ad example 2.png"/>
             <br>
-            <img class="community-image" src="public/banner ad placement.png"/>
+            <img class="community-image" src="/banner ad placement.png"/>
             `,
           },
         ]}
@@ -201,7 +201,7 @@ function App() {
             <p>You get a headline, one featured image, up to 150 words of copy, and one link (may be placed up to three times).</p>
             <a target=_blank href="https://outdoorempire.optin.com/newsletter/awlist6324539/Mjg2OTYxMTQ=/in-defense-of-scrawny-trees.htm">Example</a>
             <br>
-            <img src="public/email editorial feature.png" class="community-image"/>
+            <img src="/email editorial feature.png" class="community-image"/>
             `,
           },
           {
@@ -214,7 +214,7 @@ function App() {
             <p>To be placed in one edition of our weekly email newsletter, The Honey Hole, this includes a headline, one image, a product title, a brief product description, a short promotion description, and a CTA button.</p>
             <p>Example Template:</p>
             <br>
-            <img src="public/email exclusive deal.png" class="community-image"/>
+            <img src="/email exclusive deal.png" class="community-image"/>
             `,
           },
           {
@@ -225,8 +225,8 @@ function App() {
             <p>You provide the creative and we’ll display a standard banner ad (468 x 60 px) near the top of one edition of our weekly email newsletter, The Honey Hole.</p>
             <p>For example:</p>
             <br>
-            <img class="community-image" src="public/banner ad example 1.png"/>
-            <img class="community-image" src="public/banner ad example 2.png"/>
+            <img class="community-image" src="/banner ad example 1.png"/>
+            <img class="community-image" src="/banner ad example 2.png"/>
             `,
           },
         ]}
