@@ -209,26 +209,31 @@ export default function QuoteGenerator({
       setShowEmail(true);
       updateQuantity("youtube", 0, 1);
       updateQuantity("youtube", 1, 3);
-      updateQuantity("addOns", 2, 4);
-      updateQuantity("addOns", 3, 1);
+      updateQuantity("addOns", 2, 3);
+      updateQuantity("addOns", 1, 7);
+      updateQuantity("addOns", 3, 6);
+      updateQuantity("addOns", 4, 6);
       updateQuantity("addOns", 0, 4);
       updateQuantity("email", 0, 2);
-      updateQuantity("honeyHole", 1, 1);
-      updateQuantity("honeyHole", 2, 6);
+      updateQuantity("email", 2, 4);
+      updateQuantity("honeyHole", 0, 3);
+      updateQuantity("honeyHole", 1, 4);
       setMonthlyTerm(6);
     } else {
       setFullSend(false);
-      setShowYoutube(false);
       setShowHoneyHole(false);
       setShowEmail(false);
       updateQuantity("youtube", 0, 0);
       updateQuantity("youtube", 1, 0);
       updateQuantity("addOns", 2, 0);
+      updateQuantity("addOns", 1, 0);
       updateQuantity("addOns", 3, 0);
+      updateQuantity("addOns", 4, 0);
       updateQuantity("addOns", 0, 0);
       updateQuantity("email", 0, 0);
+      updateQuantity("email", 2, 0);
+      updateQuantity("honeyHole", 0, 0);
       updateQuantity("honeyHole", 1, 0);
-      updateQuantity("honeyHole", 2, 0);
       setMonthlyTerm(3);
     }
   };
@@ -324,44 +329,105 @@ export default function QuoteGenerator({
                 );
               })}
               {youtubeAddOnRows.map((row, index) => {
-                return (
-                  <div
-                    className={
-                      showYTAddons ? "service-row" : "service-row greyed-add-on"
-                    }
-                  >
-                    <p
-                      className="row-title"
-                      onClick={() => {
-                        setDetails(row);
-                        setShowDetails(true);
-                      }}
-                    >
-                      {row.itemName}
-                    </p>
-                    <input
-                      disabled={!showYTAddons}
-                      className="calculator-input"
-                      type="number"
-                      value={row.quantity >= 1 ? row.quantity : ""}
-                      onChange={(e) =>
-                        updateQuantity("addOns", index, Number(e.target.value))
+                if (
+                  row.itemName === "Video Intro Featured Logo" ||
+                  row.itemName === "Sitewide Sidebar Ad"
+                ) {
+                  return (
+                    <div
+                      className={
+                        fullSend ? "service-row" : "service-row greyed-add-on"
                       }
-                    />
-                    <div className="calculator-price-wrapper">
-                      <p className="dollar-sign">$</p>
-                      <input
-                        className="price-input"
-                        type="number"
-                        value={Number(row.price).toString()}
-                        onChange={(e) => {
-                          updatePrice("addOns", index, Number(e.target.value));
+                    >
+                      <p
+                        className="row-title"
+                        onClick={() => {
+                          setDetails(row);
+                          setShowDetails(true);
                         }}
+                      >
+                        {row.itemName}
+                      </p>
+                      <input
+                        disabled={!showYTAddons}
+                        className="calculator-input"
+                        type="number"
+                        value={row.quantity >= 1 ? row.quantity : ""}
+                        onChange={(e) =>
+                          updateQuantity(
+                            "addOns",
+                            index,
+                            Number(e.target.value),
+                          )
+                        }
                       />
+                      <div className="calculator-price-wrapper">
+                        <p className="dollar-sign">$</p>
+                        <input
+                          className="price-input"
+                          type="number"
+                          value={Number(row.price).toString()}
+                          onChange={(e) => {
+                            updatePrice(
+                              "addOns",
+                              index,
+                              Number(e.target.value),
+                            );
+                          }}
+                        />
+                      </div>
+                      <p>{formatDollar.format(row.price * row.quantity)}</p>
                     </div>
-                    <p>{formatDollar.format(row.price * row.quantity)}</p>
-                  </div>
-                );
+                  );
+                } else
+                  return (
+                    <div
+                      className={
+                        showYTAddons
+                          ? "service-row"
+                          : "service-row greyed-add-on"
+                      }
+                    >
+                      <p
+                        className="row-title"
+                        onClick={() => {
+                          setDetails(row);
+                          setShowDetails(true);
+                        }}
+                      >
+                        {row.itemName}
+                      </p>
+                      <input
+                        disabled={!showYTAddons}
+                        className="calculator-input"
+                        type="number"
+                        value={row.quantity >= 1 ? row.quantity : ""}
+                        onChange={(e) =>
+                          updateQuantity(
+                            "addOns",
+                            index,
+                            Number(e.target.value),
+                          )
+                        }
+                      />
+                      <div className="calculator-price-wrapper">
+                        <p className="dollar-sign">$</p>
+                        <input
+                          className="price-input"
+                          type="number"
+                          value={Number(row.price).toString()}
+                          onChange={(e) => {
+                            updatePrice(
+                              "addOns",
+                              index,
+                              Number(e.target.value),
+                            );
+                          }}
+                        />
+                      </div>
+                      <p>{formatDollar.format(row.price * row.quantity)}</p>
+                    </div>
+                  );
               })}
             </div>
           </>
@@ -373,7 +439,7 @@ export default function QuoteGenerator({
               handleVisibilityToggle(showHoneyHole, setShowHoneyHole)
             }
           >
-            <h3 className="rows-container-heading">Honey Hole</h3>
+            <h3 className="rows-container-heading">The Honey Hole</h3>
             {carat(showHoneyHole)}
           </div>
           <div

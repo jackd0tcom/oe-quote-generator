@@ -402,9 +402,14 @@ h3 {
   min-height: 60vh;
   min-width: 750px;
   max-width: 1000px;
-  max-height: 60vh;
+  max-height: 75vh;
   background-color: white;
   overflow: scroll;
+  scrollbar-width: thin;
+}
+.calculator-details {
+  display: flex;
+  flex-direction: column;
 }
 .calculator-details-head {
   display: flex;
@@ -504,9 +509,13 @@ h3 {
 .quote-form-button:hover {
   background-color: black;
 }
-.socials-wrapperp {
+.socials-wrapper {
   display: flex;
   gap: 20px;
+}
+
+.community-image {
+  max-width: 60%;
 }
 /* Mobile */
 @media screen and (max-width: 768px) {
