@@ -126,7 +126,7 @@ function App() {
             <p>It’s like a mini targeted social media feed tied directly to a YouTube channel.</p>
             <p>For the best engagement with our audience, we’ll post either a poll or quiz that relates to your product. It will include your link in the post as well as the pinned comment.</p>
             <a href="https://www.youtube.com/@theoutdoorempire/posts" target=_blank>Outdoor Empire YouTube Community</a>
-            <img class="community-image" src="public/packfire community post.png"/>
+            <img class="community-image" src="/packfire community post.png"/>
             `,
           },
           {
@@ -146,7 +146,7 @@ function App() {
             details: `
             <p>This placement is reserved exclusively for Full Send Title Sponsors.</p>
             <p>You provide the creative and we’ll display an ad with a link in the sidebar of our website on all pages where a sidebar appears for the duration of your sponsorship.</p>
-            <img class="community-image" src="public/banner ad placement.png"/>
+            <img class="community-image" src="/banner ad placement.png"/>
             `,
           },
         ]}

@@ -552,7 +552,7 @@ export default function QuoteGenerator({
         </div>
       </div>
       <div className="quote-generator-sidebar">
-        <div className="quote-generator-foot">
+        <div className="quote-generator-foot cart-wrapper">
           <div className="cart-row">
             <p>Item</p>
             <p>Qty</p>
