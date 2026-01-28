@@ -600,7 +600,7 @@ export default function QuoteGenerator({
             <p className="monthly">
               {!fullSend
                 ? formatDollar.format(grandTotal / monthlyTerm)
-                : formatDollar.format(10000)}
+                : formatDollar.format((grandTotal - 22850) / monthlyTerm)}
             </p>
           </div>
         </div>
