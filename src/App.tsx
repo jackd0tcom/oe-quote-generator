@@ -77,6 +77,7 @@ function App() {
             details: `
             <p>Our masterful video editors will make a vertical format video (usually 15-30 seconds in duration for best performance) that will be both eye-catching and compelling.</p>
             <p>This video will then be posted to our Outdoor Empire YouTube, Instagram, Facebook, and Tiktok accounts.</p>
+            <p> Note: Short form video content is only available as an add-on to a Featured Video Integration or Feature-Length YouTube video.</p>
               <iframe width="100%" height="600" src="https://www.youtube.com/embed/a1_VLujfKfc?si=fv00BUMOdgzwWuDJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               <br/>
               <br/>
