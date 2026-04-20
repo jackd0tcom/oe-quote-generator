@@ -68,6 +68,14 @@ function App() {
               <iframe width="100%" height="600" src="https://www.youtube.com/embed/jKk1q_wYYqo?si=m7D2WyAclL-upjp-&amp;start=290" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             `,
           },
+          {
+            itemName: "Show and Tell Feature",
+            duration: "60-300 seconds",
+            price: 800,
+            details: `
+            <p>A Show and Tell Feature is a 60-300 second featured product in our Show and Tell video series.</p>
+            `,
+          },
         ]}
         youtubeAddOns={[
           {
