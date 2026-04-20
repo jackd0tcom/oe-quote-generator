@@ -74,6 +74,10 @@ function App() {
             price: 800,
             details: `
             <p>A Show and Tell Feature is a 60-300 second featured product in our Show and Tell video series.</p>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/G1zu17H_cZA?si=apeOosIrG_JASh_A" title="Camp Kitchen Gear You NEED vs What&#39;s Nice To Have" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <br/>
+              <br/>
+              <iframe width="100%" height="600" src="https://www.youtube.com/embed/K7F4mCW21ck?si=zAiy7HbjPykCXjx5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             `,
           },
         ]}
