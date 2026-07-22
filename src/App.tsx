@@ -87,7 +87,7 @@ function App() {
             details: `
             <p>The Cameo is a quick 15-30 second shoutout to your brand thanking you for the product and talking it up.
             </p>
-            <iframe width="100%" height="600" src="https://www.youtube.com/embed/30dzZVLFnPQ?si=-kXQNlI3gQHKUW04&amp;  start=668" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;    encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"  allowfullscreen></iframe>
+            <iframe width="100%" height="600" src="https://www.youtube.com/embed/30dzZVLFnPQ?si=-kXQNlI3gQHKUW04&amp;start=668;  start=668" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;    encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"  allowfullscreen></iframe>
 
             `,
           },
