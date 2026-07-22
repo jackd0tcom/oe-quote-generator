@@ -71,13 +71,24 @@ function App() {
           {
             itemName: "Show and Tell Feature",
             duration: "60-300 seconds",
-            price: 800,
+            price: 1250,
             details: `
             <p>A Show and Tell Feature is a 60-300 second featured product in our Show and Tell video series.</p>
               <iframe width="100%" height="600" src="https://www.youtube.com/embed/G1zu17H_cZA?si=apeOosIrG_JASh_A" title="Camp Kitchen Gear You NEED vs What&#39;s Nice To Have" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               <br/>
               <br/>
               <iframe width="100%" height="600" src="https://www.youtube.com/embed/K7F4mCW21ck?si=zAiy7HbjPykCXjx5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            `,
+          },
+          {
+            itemName: "Cameo",
+            duration: "30-300 seconds",
+            price: 1250,
+            details: `
+            <p>The Cameo is a quick 15-30 second shoutout to your brand thanking you for the product and talking it up.
+            </p>
+            <iframe width="100%" height="600" src="https://www.youtube.com/embed/30dzZVLFnPQ?si=-kXQNlI3gQHKUW04&amp;  start=668" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;    encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"  allowfullscreen></iframe>
+
             `,
           },
         ]}
@@ -130,38 +141,38 @@ function App() {
             <p>We hand over the valuable, authentic, and difficult-to-reproduce video assets we created so you can re-cut and re-purpose the footage for your own organic and paid advertising campaigns.</p>
             `,
           },
-          {
-            itemName: "Youtube Community Post",
-            duration: "",
-            price: 500,
-            details: `
-            <p>A YouTube community post is an engaging tool for boosting audience engagement and building a community.</p>
-            <p>It’s like a mini targeted social media feed tied directly to a YouTube channel.</p>
-            <p>For the best engagement with our audience, we’ll post either a poll or quiz that relates to your product. It will include your link in the post as well as the pinned comment.</p>
-            <a href="https://www.youtube.com/@theoutdoorempire/posts" target=_blank>Outdoor Empire YouTube Community</a>
-            <img class="community-image" src="/packfire community post.png"/>
-            `,
-          },
-          {
-            itemName: "Video Intro Featured Logo",
-            duration: "1 Month",
-            price: 1000,
-            details: `
-            <p>This placement is reserved exclusively for Full Send Title Sponsors.</p>
-            <p>Your logo will appear in the introduction of every new eligible long-form YouTube video published by Outdoor Empire during the duration of your sponsorship.</p>
-            <p>You may also provide a link to include in every video description.</p>
-            `,
-          },
-          {
-            itemName: "Sitewide Sidebar Ad",
-            duration: "1 Month",
-            price: 500,
-            details: `
-            <p>This placement is reserved exclusively for Full Send Title Sponsors.</p>
-            <p>You provide the creative and we’ll display an ad with a link in the sidebar of our website on all pages where a sidebar appears for the duration of your sponsorship.</p>
-            <img class="community-image" src="/banner ad placement.png"/>
-            `,
-          },
+          // {
+          //   itemName: "Youtube Community Post",
+          //   duration: "",
+          //   price: 500,
+          //   details: `
+          //   <p>A YouTube community post is an engaging tool for boosting audience engagement and building a community.</p>
+          //   <p>It’s like a mini targeted social media feed tied directly to a YouTube channel.</p>
+          //   <p>For the best engagement with our audience, we’ll post either a poll or quiz that relates to your product. It will include your link in the post as well as the pinned comment.</p>
+          //   <a href="https://www.youtube.com/@theoutdoorempire/posts" target=_blank>Outdoor Empire YouTube Community</a>
+          //   <img class="community-image" src="/packfire community post.png"/>
+          //   `,
+          // },
+          // {
+          //   itemName: "Video Intro Featured Logo",
+          //   duration: "1 Month",
+          //   price: 1000,
+          //   details: `
+          //   <p>This placement is reserved exclusively for Full Send Title Sponsors.</p>
+          //   <p>Your logo will appear in the introduction of every new eligible long-form YouTube video published by Outdoor Empire during the duration of your sponsorship.</p>
+          //   <p>You may also provide a link to include in every video description.</p>
+          //   `,
+          // },
+          // {
+          //   itemName: "Sitewide Sidebar Ad",
+          //   duration: "1 Month",
+          //   price: 500,
+          //   details: `
+          //   <p>This placement is reserved exclusively for Full Send Title Sponsors.</p>
+          //   <p>You provide the creative and we’ll display an ad with a link in the sidebar of our website on all pages where a sidebar appears for the duration of your sponsorship.</p>
+          //   <img class="community-image" src="/banner ad placement.png"/>
+          //   `,
+          // },
         ]}
         honeyHoleItems={[
           // {
