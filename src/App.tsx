@@ -52,7 +52,7 @@ function App() {
           {
             itemName: "Featured Video Integration",
             duration: "60-90 seconds",
-            price: 5000,
+            price: 7500,
             details: `
             <p><strong>Most popular! </strong></p>  
             <p>A YouTube integration is a 60-90 second mid-roll video promotion within a long-form YouTube video on our channel.</p>
@@ -71,7 +71,7 @@ function App() {
           {
             itemName: "Show and Tell Feature",
             duration: "60-300 seconds",
-            price: 1250,
+            price: 2500,
             details: `
             <p>A Show and Tell Feature is a 60-300 second featured product in our Show and Tell video series.</p>
               <iframe width="100%" height="600" src="https://www.youtube.com/embed/G1zu17H_cZA?si=apeOosIrG_JASh_A" title="Camp Kitchen Gear You NEED vs What&#39;s Nice To Have" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -83,7 +83,7 @@ function App() {
           {
             itemName: "Cameo",
             duration: "30-300 seconds",
-            price: 1250,
+            price: 2500,
             details: `
             <p>The Cameo is a quick 15-30 second shoutout to your brand thanking you for the product and talking it up.
             </p>
